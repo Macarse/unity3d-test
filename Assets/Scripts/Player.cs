@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
 
 	private void NotifyDeath()
 	{
-		Debug.Log("Die");
-		Application.LoadLevel(Application.loadedLevel);
+		Time.timeScale = 0.0f;
+		Debug.Log("You just died");
 	}
 }
