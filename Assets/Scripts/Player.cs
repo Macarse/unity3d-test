@@ -68,7 +68,30 @@ public class Player : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		NotifyDeath();
+		// Check if the trigger was caused by a border
+		MeshFilter mf = other.gameObject.GetComponent<MeshFilter>();
+		if ( mf == null )
+		{
+			return;
+		}
+
+		Vector3 objSize = mf.sharedMesh.bounds.size;
+		Vector3 objScale = other.gameObject.transform.lossyScale;
+		float objWidth = objSize.x * objScale.x;
+		float leftBorder = other.gameObject.transform.position.x - objWidth * .5f;
+		float diff = Mathf.Abs(this.transform.position.x - leftBorder);
+
+		Debug.Log("other " + other.name + " position: " + other.transform.position + 
+			" objSize: " + objSize + " scale: " + objScale +
+			" objWidth: " + objWidth +
+			" left border: " + leftBorder +
+			" player x: " + this.transform.position.x + 
+			" diff: " + diff);
+
+		if ( diff < 0.3f )
+		{
+			NotifyDeath ();
+		}
 	}
 
 	private void NotifyDeath()
