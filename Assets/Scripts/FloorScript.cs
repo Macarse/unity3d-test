@@ -16,7 +16,7 @@ public class FloorScript : MonoBehaviour
 		if (PlayerTransform.position.x > CurrentBackground.transform.position.x)
 		{
 			GameObject next = Instantiate(NextBackgroundPrefab[++CurrentIndex % NextBackgroundPrefab.Length]) as GameObject;
-			next.transform.position = new Vector3(CurrentBackground.transform.position.x + 50f,
+			next.transform.position = new Vector3(CurrentBackground.transform.position.x + 25f,
                                        CurrentBackground.transform.position.y,
                                        CurrentBackground.transform.position.z);
 			next.transform.parent = this.transform;

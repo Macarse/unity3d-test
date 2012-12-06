@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
 	void Awake()
 	{
-		JumpForce = new Vector3(0f, 250f, 0f);
+		JumpForce = new Vector3(0f, 600f, 0f);
 		OnTheFloor = false;
 	}
 
